@@ -1,0 +1,57 @@
+{% extends 'Modal_app_2/base.html' %}
+<title>{% block title %} Students Registration Add Student {% endblock title %}</title>
+{% block content %}
+{% load static %}
+<!-- Insert Form HTML -->
+<div class="row d-flex justify-content-center" data-bs-theme="">
+    <div class="col-sm-6">
+        <div class="myForm">
+            <h4 class="text-left alert alert-info">
+                Add Student Information
+            </h4>
+            <hr class="new1">
+            <form action="" method="POST" autocomplete="off">
+                {% csrf_token %}
+                <p class="form-group">
+                    <label for="txt_inst_Name">Name:<span class="mandatory"></span></label>
+                    <input class="form-control" id="txt_inst_Name" maxlength="100" name="inst_Name" type="text" required>
+                </p>
+                <p class="form-group">
+                    <label for="txt_inst_Age">Age:<span class="mandatory"></span></label>
+                    <input class="form-control" id="txt_inst_Age" maxlength="100" name="inst_Age" type="text" required>
+                </p>
+                <p class="form-group">
+                    <label for="txt_inst_E_mail">e-Mail:<span class="mandatory"></span></label>
+                    <input class="form-control" id="txt_inst_E_mail" maxlength="300" name="inst_E_mail" type="email" required>
+                </p>
+                <p class="form-group">
+                    <label for="txt_inst_Password">Password:<span class="mandatory"></span></label>
+                    <input class="form-control" id="txt_inst_Password" maxlength="50" name="inst_Password" type="password" required>
+                </p>
+                <hr class="new1">
+                <div class="form-group text-end">
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href = '{% url 'App_home' %}';">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--Message from Backend-->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+<!--            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+            <script src="{% static 'Modal_app_2/js/sweetalert.min.js' %}"></script>
+            <script src="{% static 'Modal_app_2/js/custom.js' %}"></script>
+            <script>
+                let msg = "{{message}}";
+                // swal("Perfect !", msg, "success");
+                SwalSuccess(msg);
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,48 @@
+<!-- Edit Modal HTML -->
+{% if stu %}
+{% for obj in stu %}
+<div class="modal fade" id="editStudentModal-{{forloop.counter}}" data-bs-theme="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="editStudentModalLabel">Edit Student</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'app_update' obj.ID %}" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="txt_upd_Name" class="col-form-label mandatory">Name:</label>
+                        <input type="text" class="form-control" id="txt_upd_Name" name="upd_Name" value="{{obj.Name}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_upd_Age" class="col-form-label mandatory">Age:</label>
+                        <input type="text" class="form-control" id="txt_upd_Age" name="upd_Age" value="{{obj.Age}}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="txt_upd_E_mail" class="col-form-label mandatory">Email:</label>
+                        <input type="text" class="form-control" id="txt_upd_E_mail" name="upd_E_mail" value="{{obj.E_mail}}" required>
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                        <label>Address</label>-->
+<!--                        <textarea class="form-control" required></textarea>-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                        <label>Phone</label>-->
+<!--                        <input type="text" class="form-control" required>-->
+<!--                    </div>-->
+                    <div class="form-group">
+                        <label for="txt_upd_Password" class="col-form-label mandatory">Password:</label>
+                        <input type="password" class="form-control" id="txt_upd_Password" name="upd_Password" value="{{obj.password}}" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}

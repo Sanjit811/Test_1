@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<!--<html lang="en" data-bs-theme="dark">-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'Modal_app_2/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'Modal_app_2/css/custom.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>{% block title %} Students Registration Home {% endblock title %}</title>
+<!--    <style>-->
+<!--        .mandatory::after {-->
+<!--            content: " *";-->
+<!--            color: red;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+    <section class="container mt-5">
+        <h2 class="text-center alert alert-danger">
+            Function Based View with HTML Form CRUD Project
+        </h2>
+        {% block content %} {% endblock content %}
+    </section>
+<script src="{% static 'Modal_app_2/js/jquery-3.7.1.min.js' %}"></script>
+<script src="{% static 'Modal_app_2/js/popper.min.js' %}"></script>
+<script src="{% static 'Modal_app_2/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'Modal_app_2/js/sweetalert.min.js' %}"></script>
+<script src="{% static 'Modal_app_2/js/custom.js' %}"></script>
+</body>
+</html>

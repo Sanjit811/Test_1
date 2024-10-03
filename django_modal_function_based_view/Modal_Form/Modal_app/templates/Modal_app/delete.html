@@ -1,0 +1,31 @@
+<!-- Delete Modal HTML -->
+{% if stu %}
+{% for obj in stu %}
+<div class="modal fade" id="deleteStudentModal-{{forloop.counter}}" data-bs-theme="" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title fs-5" id="deleteStudentModalLabel">Delete Student</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action=" {% url 'app_delete' obj.ID  %}" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <p>Are you sure you want to delete these Records?</p>
+                        <p class="text-warning">
+                            <small>This action cannot be undone.</small>
+                        </p>
+                        <p class="text-danger">Do you want to delete "{{obj.Name}}" ?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}

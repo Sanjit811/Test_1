@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Students Registration</title>
+    <link rel="stylesheet" href="{% static 'Modal_app/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'Modal_app/css/custom.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--    <style>-->
+<!--        .mandatory::after {-->
+<!--            content: " *";-->
+<!--            color: red;-->
+<!--        }-->
+<!--    </style>-->
+</head>
+<body>
+    <section class="container mt-5">
+        <h2 class="text-center alert alert-danger">
+            Function Based View with Modal Input CRUD Project
+        </h2>
+        {% block content %} {% endblock content %}
+    </section>
+<script src="{% static 'Modal_app/js/jquery.js' %}"></script>
+<script src="{% static 'Modal_app/js/popper.js' %}"></script>
+<script src="{% static 'Modal_app/js/bootstrap.js' %}"></script>
+<script src="{% static 'Modal_app/js/custom.js' %}"></script>
+<script src="{% static 'Modal_app/js/sweetalert.min.js' %}"></script>
+</body>
+</html>

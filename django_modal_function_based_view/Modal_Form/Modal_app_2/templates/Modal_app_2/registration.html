@@ -1,0 +1,103 @@
+{% extends 'Modal_app_2/base.html' %}
+{% block content %}
+{% load static %}
+<!--<h1>This is Registration Page</h1>-->
+<div class="table-wrapper">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Manage <b>Students</b></h2>
+            </div>
+            <div class="col-sm-6">
+                <!-- Button trigger modal -->
+<!--                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEmployeeModal">-->
+<!--                    Launch static backdrop modal-->
+<!--                </button>-->
+                <a href="{% url 'app_addrecord' %}" class="btn btn-primary"><i class="material-icons">&#xE147;</i> <span>Add New Student</span></a>
+                <a href="#deleteStudentModal-{{forloop.counter}}" class="btn btn-danger" data-bs-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
+            </div>
+        </div>
+    </div>
+    {% if stu %}
+
+
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="selectAll">
+                        <label for="selectAll"></label>
+                    </span>
+                </th>
+<!--                <th scope="col" style="display:none;">ID</th>-->
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">e-Mail</th>
+                <th scope="col">Password</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        {% for item in stu %}
+        <tbody>
+
+            <tr>
+                <td>
+                    <span class="custom-checkbox">
+                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                        <label for="checkbox1"></label>
+                    </span>
+                </td>
+<!--                <td style="display:none;">1</td>-->
+                <td>{{item.ID}}</td>
+                <td>{{item.Name}}</td>
+                <td>{{item.Age}}</td>
+                <td>{{item.E_mail}}</td>
+                <td>{{item.password}}</td>
+                <td>
+                    <a href="{% url 'app_update' item.ID %}" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                    <a href="#deleteStudentModal-{{forloop.counter}}" class="delete" data-bs-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                </td>
+            </tr>
+
+        </tbody>
+        {% endfor %}
+    </table>
+    {% endif %}
+    {% include 'Modal_app_2/deleteModal.html' %}
+
+
+
+
+    <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">4</a></li>
+            <li class="page-item"><a href="#" class="page-link">5</a></li>
+            <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--Message from Backend-->
+{% if messages %}
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+<!--            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>-->
+            <script src="{% static 'Modal_app_2/js/sweetalert.min.js' %}"></script>
+            <script src="{% static 'Modal_app_2/js/custom.js' %}"></script>
+            <script>
+                let msg = "{{message}}";
+                // swal("Perfect !", msg, "success");
+                SwalSuccess(msg);
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% endblock content %}
